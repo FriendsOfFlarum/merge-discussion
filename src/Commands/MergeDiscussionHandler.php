@@ -25,6 +25,12 @@ use Illuminate\Events\Dispatcher;
 use Illuminate\Support\Collection as SupportCollection;
 use Throwable;
 
+/**
+ * Use the `MergeDiscussions` command instead. This class is kept for backwards compatibility.
+ * TODO: Remove in 2.0.
+ *
+ * @deprecated
+ */
 class MergeDiscussionHandler
 {
     /**
@@ -69,12 +75,12 @@ class MergeDiscussionHandler
             $this->fixPostsNumber($discussion);
         }
 
-        /** @var Collection $discussions */
+        /** @var Collection<Discussion> $discussions */
         $discussions = Discussion::query()
             ->with('posts')
             ->findMany($command->ids);
 
-        /** @var Collection $posts */
+        /** @var Collection<Post> $posts */
         $posts = $discussions->pluck('posts')->flatten(1)
             ->reject(function (Post $post) {
                 return $post->type === 'discussionTagged';

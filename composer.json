@@ -46,7 +46,10 @@
                 "name": "fas fa-code-branch fa-flip-vertical",
                 "backgroundColor": "#e74c3c",
                 "color": "#fff"
-            }
+            },
+            "optional-dependencies": [
+                "flarum/lock"
+            ]
         },
         "flagrow": {
             "discuss": "https://discuss.flarum.org/d/19460"
@@ -60,7 +63,8 @@
     },
     "require-dev": {
         "flarum/phpstan": "*",
-        "flarum/testing": "^1.0.0"
+        "flarum/testing": "^1.0.0",
+        "flarum/lock": "*"
     },
     "scripts": {
         "analyse:phpstan": "phpstan analyse",

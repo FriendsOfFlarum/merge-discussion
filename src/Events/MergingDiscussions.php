@@ -38,11 +38,17 @@ class MergingDiscussions
      */
     public $mergedDiscussions;
 
-    public function __construct(User $actor, Collection $posts, Discussion $discussion, Collection $mergedDiscussions)
+    /**
+     * @var string
+     */
+    public $ordering;
+
+    public function __construct(User $actor, Collection $posts, Discussion $discussion, Collection $mergedDiscussions, string $ordering = 'date')
     {
         $this->actor = $actor;
         $this->posts = $posts;
         $this->discussion = $discussion;
         $this->mergedDiscussions = $mergedDiscussions;
+        $this->ordering = $ordering;
     }
 }

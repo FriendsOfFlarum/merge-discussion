@@ -15,7 +15,7 @@ use Flarum\Api\Controller\AbstractShowController;
 use Flarum\Api\Serializer\DiscussionSerializer;
 use Flarum\Discussion\Discussion;
 use Flarum\Http\RequestUtil;
-use FoF\MergeDiscussions\Commands\MergeDiscussion;
+use FoF\MergeDiscussions\Commands\MergeDiscussions;
 use FoF\MergeDiscussions\Validators\MergeDiscussionValidator;
 use Illuminate\Contracts\Bus\Dispatcher;
 use Illuminate\Support\Arr;
@@ -84,7 +84,7 @@ class MergePreviewController extends AbstractShowController
          * @var Discussion
          */
         $discussion = $this->bus->dispatch(
-            new MergeDiscussion($actor, $discussion, $ids, $ordering, false)
+            new MergeDiscussions($actor, $discussion, $ids, $ordering, false)
         );
 
         $discussion->setRelation('posts', $discussion->posts);
